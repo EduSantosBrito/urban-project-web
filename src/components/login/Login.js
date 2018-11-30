@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import createHistory from "history/createBrowserHistory";
+
 import axios from "axios";
 import "./Login.css";
 
@@ -22,9 +24,13 @@ export default class Login extends Component {
       })
       .then(res => {
         localStorage.setItem("tokenAuth", res.data);
+        const history = createHistory();
+        console.log("passou");
+        history.push("/dashboard");
+        history.go("/dashboard");
       })
       .catch(err => {
-        alert(err.response.data.message);
+        console.log(err);
       });
   };
 

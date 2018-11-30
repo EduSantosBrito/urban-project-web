@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export default class CrudUsuario extends Component {
   handleNameChange = e => {
     this.setState({ name: e.target.value });
   };
-  
+
   handleEmailChange = e => {
     this.setState({ email: e.target.value });
   };
@@ -18,19 +19,21 @@ export default class CrudUsuario extends Component {
   };
 
   handleClick = () => {
-    let user = { name: this.state.name, email: this.state.email, password: this.state.password, permission: this.state.permission };
+    let user = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+      permission: this.state.permission
+    };
     axios
       .post("http://localhost:8081/users/add", user, {
         headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
+          Authorization: `Bearer ${localStorage.getItem("tokenAuth")}`
         }
       })
-      .then(res => {
-        localStorage.setItem("tokenAuth", res.data);
-      })
+      .then(res => {})
       .catch(err => {
-        alert(err.response.data.message);
+        console.log(err);
       });
   };
   render() {
@@ -39,7 +42,7 @@ export default class CrudUsuario extends Component {
         <aside />
         <main>
           <img
-            src={require("../../assets/logo.svg")}
+            src={require("../../../assets/logo.svg")}
             alt="Logo da Urban, a letra U colorida com duas tonalidades de roxo."
           />
           <h1>Log into your account</h1>
