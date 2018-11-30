@@ -1,10 +1,13 @@
 .navbar {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 3fr;
+  grid-template-rows: 2fr 6fr 1fr;
   grid-template-areas:
     "header"
-    "aside";
+    "aside"
+    "footer";
+  font-family: "Open Sans", sans-serif;
+  --bg-color: #a942dd;
 }
 
 .navbar > header {
@@ -12,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--bg-color);
 }
 
 .navbar > header > img {
@@ -20,4 +24,40 @@
 
 .navbar > aside {
   grid-area: aside;
+  background-color: var(--bg-color);
+}
+.navbar > aside > ul {
+  padding: 0;
+  margin: 0;
+}
+.navbar > aside > ul > li {
+  width: 100%;
+  list-style: none;
+  padding: 15px 40px;
+  border-left: 2px solid transparent;
+}
+.navbar > aside > ul > li:hover {
+  border-left: 2px solid white;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.navbar > aside > ul > li > a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar > footer {
+  grid-area: footer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+}
+
+.navbar > footer > a {
+  color: white;
+  text-decoration: none;
+}
+.icon {
+  margin-right: 10px;
 }

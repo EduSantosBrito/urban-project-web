@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Navbar from "../Navbar/Navbar";
+import "./CrudUsuario.css";
 
 export default class CrudUsuario extends Component {
   handleNameChange = e => {
@@ -14,16 +16,18 @@ export default class CrudUsuario extends Component {
     this.setState({ password: e.target.value });
   };
 
-  handlePermissionChange = e => {
-    this.setState({ permission: e.target.value });
+  handlePermissionTypeChange = e => {
+    this.setState({ permissionType: e.target.value });
   };
 
   handleClick = () => {
+    console.log(this.state.permissionType);
+    console.log(this.state.permissionType === "Administrador");
     let user = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      permission: this.state.permission
+      permissionType: this.state.permissionType === "Administrador" ? 1 : 2
     };
     axios
       .post("http://localhost:8081/users/add", user, {
@@ -38,52 +42,42 @@ export default class CrudUsuario extends Component {
   };
   render() {
     return (
-      <div className="site">
-        <aside />
-        <main>
-          <img
-            src={require("../../../assets/logo.svg")}
-            alt="Logo da Urban, a letra U colorida com duas tonalidades de roxo."
-          />
-          <h1>Log into your account</h1>
+      <div className="content">
+        <Navbar />
+        <main className="content__main">
+          <h1>Criar novo usuário</h1>
           <div className="form">
+            <label className="form__label">Seu nome</label>
             <input
               className="form__input"
-              placeholder="Your name"
               type="text"
               onChange={this.handleNameChange}
               required
             />
-
+            <label className="form__label">Seu email</label>
             <input
               className="form__input"
-              placeholder="Your email"
               type="text"
               onChange={this.handleEmailChange}
               required
             />
-
+            <label className="form__label">Sua senha</label>
             <input
               className="form__input"
-              placeholder="Your password"
-              type="text"
+              type="password"
               onChange={this.handlePasswordChange}
               required
             />
-
+            <label className="form__label">Nível de permissão (opcional)</label>
             <input
               className="form__input"
-              placeholder="Your permission"
-              type="password"
-              onChange={this.handlePermissionChange}
+              type="text"
+              onChange={this.handlePermissionTypeChange}
               required
             />
-            <button onClick={this.handleClick}>Log in</button>
+            <button onClick={this.handleClick}>Cadastrar</button>
           </div>
         </main>
-        <footer>
-          <p>Copyright © Urban Studios</p>
-        </footer>
       </div>
     );
   }

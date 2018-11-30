@@ -25,7 +25,6 @@ export default class Login extends Component {
       .then(res => {
         localStorage.setItem("tokenAuth", res.data);
         const history = createHistory();
-        console.log("passou");
         history.push("/dashboard");
         history.go("/dashboard");
       })
@@ -36,7 +35,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="site">
+      <div className="content-login">
         <aside />
         <main>
           <img

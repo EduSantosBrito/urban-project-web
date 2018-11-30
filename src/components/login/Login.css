@@ -1,4 +1,4 @@
-.site {
+.content-login {
   display: grid;
   grid-template-columns: 2fr 3fr;
   grid-template-rows: 70vh 30vh;
@@ -7,13 +7,13 @@
     "aside footer";
   font-family: "Open Sans", sans-serif;
 }
-.site > aside {
+.content-login > aside {
   grid-area: aside;
   background: url("../../assets/bg-login.jpg");
   background-size: cover;
   background-position: center center;
 }
-.site > main {
+.content-login > main {
   grid-area: main;
   display: flex;
   flex-direction: column;
@@ -22,17 +22,17 @@
   margin-top: 50px;
 }
 
-.site > main > h1 {
+.content-login > main > h1 {
   font-weight: 400;
   font-size: 20px;
   margin-top: 50px;
 }
 
-.site > main > img {
+.content-login > main > img {
   width: 5vw;
 }
 
-.site > main > .form {
+.content-login > main > .form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,7 +40,7 @@
   margin-top: 30px;
 }
 
-.site > main > .form > .form__input {
+.content-login > main > .form > .form__input {
   border: 1px solid #707070;
   border-radius: 50px;
   outline: none;
@@ -48,16 +48,17 @@
   margin: 5px;
 }
 
-.site > main > .form > button {
+button {
   background-color: #a942dd;
   border: none;
   border-radius: 50px;
   padding: 10px 25px;
   color: white;
   cursor: pointer;
+  outline: none;
 }
 
-.site > footer {
+.content-login > footer {
   grid-area: footer;
   display: flex;
   align-items: center;
